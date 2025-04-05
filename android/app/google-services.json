@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "136991639825",
+    "project_id": "planto-6aafe",
+    "storage_bucket": "planto-6aafe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136991639825:android:db033d6adb1a7ba549e4b0",
+        "android_client_info": {
+          "package_name": "com.example.planto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2J1RCpA9Z8sEaBNgGw4TQibcHmvXd0VA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
