@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:planto/login_screen.dart';
-import 'package:planto/signup_screen.dart';
 const Color darkFontGrey = Color.fromRGBO(62, 68, 71, 1);
 
 void main() async {
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Planto",
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.transparent,
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(
             color: darkFontGrey,

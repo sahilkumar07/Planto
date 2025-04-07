@@ -28,14 +28,12 @@ class _SignupScreenState extends State<SignupScreen> {
   var passwordController = TextEditingController();
   var passwordRetypeController = TextEditingController();
   var mobileController = TextEditingController();
-  var addressController = TextEditingController();
 
   bool isNameValid = true;
   bool isEmailValid = true;
   bool isPasswordValid = true;
   bool isPasswordRetypeValid = true;
   bool isMobileValid = true;
-  bool isAddressValid = true;
 
   bool areFieldsFilled() {
     return nameController.text.trim().isNotEmpty &&
@@ -44,7 +42,6 @@ class _SignupScreenState extends State<SignupScreen> {
         passwordController.text.trim().length >= 6 &&
         passwordController.text == passwordRetypeController.text &&
         mobileController.text.trim().isNotEmpty &&
-        addressController.text.trim().isNotEmpty &&
         isCheck == true;
   }
 
@@ -57,7 +54,6 @@ class _SignupScreenState extends State<SignupScreen> {
       isPasswordRetypeValid =
           passwordController.text == passwordRetypeController.text;
       isMobileValid = mobileController.text.trim().isNotEmpty;
-      isAddressValid = addressController.text.trim().isNotEmpty;
     });
   }
 
@@ -77,7 +73,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: const Color.fromARGB(255, 236, 233, 233)
+                          .withOpacity(0.3),
                       blurRadius: 15,
                       offset: const Offset(0, 5),
                     ),
@@ -86,7 +83,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Column(
                   children: [
                     10.heightBox,
-                    "Welcome to Planto".text.fontFamily("sans_bold").size(18).make(),
+                    "Welcome to Planto"
+                        .text
+                        .fontFamily("sans_bold")
+                        .size(18)
+                        .make(),
                     15.heightBox,
                     Obx(() => Column(
                           children: [
@@ -95,7 +96,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               title: name,
                               controller: nameController,
                               isPass: false,
-                              errorText: isNameValid ? null : "Name cannot be empty",
+                              errorText:
+                                  isNameValid ? null : "Name cannot be empty",
                               prefixIcon: Icons.person,
                               onChanged: (_) => validateFields(),
                             ),
@@ -113,7 +115,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               title: password,
                               controller: passwordController,
                               isPass: true,
-                              errorText: isPasswordValid ? null : "Password must be 6+ chars",
+                              errorText: isPasswordValid
+                                  ? null
+                                  : "Password must be 6+ chars",
                               prefixIcon: Icons.lock,
                               onChanged: (_) => validateFields(),
                             ),
@@ -122,7 +126,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               title: 'Retype Password',
                               controller: passwordRetypeController,
                               isPass: true,
-                              errorText: isPasswordRetypeValid ? null : "Passwords do not match",
+                              errorText: isPasswordRetypeValid
+                                  ? null
+                                  : "Passwords do not match",
                               prefixIcon: Icons.lock_outline,
                               onChanged: (_) => validateFields(),
                             ),
@@ -131,10 +137,13 @@ class _SignupScreenState extends State<SignupScreen> {
                               title: 'Mobile Number',
                               controller: mobileController,
                               isPass: false,
-                              errorText: isMobileValid ? null : "Mobile number required",
+                              errorText: isMobileValid
+                                  ? null
+                                  : "Mobile number required",
                               prefixIcon: Icons.phone,
                               onChanged: (_) => validateFields(),
                             ),
+          
                             5.heightBox,
                             Row(
                               children: [
@@ -190,14 +199,17 @@ class _SignupScreenState extends State<SignupScreen> {
                             10.heightBox,
                             controller.isloading.value
                                 ? const CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation(redColor),
+                                    valueColor:
+                                        AlwaysStoppedAnimation(redColor),
                                   )
                                 : IgnorePointer(
                                     ignoring: !areFieldsFilled(),
                                     child: Opacity(
                                       opacity: areFieldsFilled() ? 1.0 : 0.6,
                                       child: OurButton(
-                                        color: areFieldsFilled() ? redColor : lightGrey,
+                                        color: areFieldsFilled()
+                                            ? redColor
+                                            : lightGrey,
                                         title: signup,
                                         textColor: whiteColor,
                                         onPress: () async {
@@ -207,25 +219,31 @@ class _SignupScreenState extends State<SignupScreen> {
                                             try {
                                               await controller
                                                   .signupMethod(
-                                                    email: emailController.text,
-                                                    password: passwordController.text,
+                                                    email:
+                                                        emailController.text,
+                                                    password:
+                                                        passwordController.text,
                                                     context: context,
                                                   )
                                                   .then((value) {
                                                 if (value != null) {
-                                                  VxToast.show(context, msg: 'Signup successful');
+                                                  VxToast.show(context,
+                                                      msg:
+                                                          'Signup successful');
                                                   Get.offAll(() => Home());
                                                 }
                                               });
                                             } catch (e) {
                                               auth.signOut();
-                                              VxToast.show(context, msg: e.toString());
+                                              VxToast.show(context,
+                                                  msg: e.toString());
                                               controller.isloading(false);
                                             }
                                           } else {
                                             VxToast.show(
                                               context,
-                                              msg: 'Please fill all fields correctly',
+                                              msg:
+                                                  'Please fill all fields correctly',
                                             );
                                           }
                                         },
@@ -238,13 +256,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                 children: [
                                   TextSpan(
                                     text: alreadyHaveaccount,
-                                    style:
-                                        TextStyle(fontFamily: "sans_bold", color: fontGrey),
+                                    style: TextStyle(
+                                        fontFamily: "sans_bold",
+                                        color: fontGrey),
                                   ),
                                   TextSpan(
                                     text: login,
-                                    style:
-                                        TextStyle(fontFamily: "sans_bold", color: redColor),
+                                    style: TextStyle(
+                                        fontFamily: "sans_bold",
+                                        color: redColor),
                                   ),
                                 ],
                               ),

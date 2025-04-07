@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   (context.screenHeight * 0.1).heightBox,
                   10.heightBox,
-                  "Log in".text.fontFamily("sans_bold").black.size(18).make(),
+                  "Login".text.fontFamily("sans_bold").black.size(18).make(),
                   15.heightBox,
                   Obx(
                     () => Column(
